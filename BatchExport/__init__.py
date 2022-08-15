@@ -3,7 +3,7 @@ bl_info = {
     "author" : "Thanh Toan",
     "version": (1, 0),
     "blender": (2, 93, 1),
-    "location": "Function",
+    "location": "Batch Export Panel",
     "description": "",
     "warning": "",
     "wiki_url": "",
@@ -24,31 +24,31 @@ from . BE_Op import *
 
 
 bpy.types.Scene.export_folder = StringProperty  ( 
-                                                name="export folder",
-                                                subtype="DIR_PATH",
-                                                description="Directory to export FBX files into"
+                                                name = "export folder",
+                                                subtype = "DIR_PATH",
+                                                description = "Directory to export FBX files into"
                                                 )
 
 ## CUSTOM PROPERTIES ##
 
 bpy.types.Scene.custom_prop = BoolProperty     (
-                                                name="custom properties",
-                                                description="Export Custom Properties",
-                                                default=False
+                                                name = "custom properties",
+                                                description = "Export Custom Properties",
+                                                default = False
                                                 )
 
 ## TRANSFORM ##
 
 bpy.types.Scene.clear_transform = BoolProperty  (
-                                                name="clear transform",
-                                                description="Clear all Transformations",
-                                                default=True
+                                                name = "clear transform",
+                                                description = "Clear all Transformations",
+                                                default = True
                                                 )
 
 bpy.types.Scene.forward_axis = EnumProperty     (
-                                                name="forward",
-                                                description="",
-                                                items=  (
+                                                name = "forward",
+                                                description = "",
+                                                items =   (
                                                             ('X', "X", "", 0),
                                                             ('Y', "Y", "", 1),
                                                             ('Z', "Z", "", 2),
@@ -56,13 +56,13 @@ bpy.types.Scene.forward_axis = EnumProperty     (
                                                             ('-Y', "-Y", "", 4),
                                                             ('-Z', "-Z", "", 5)
                                                         ),
-                                                default='Y'
+                                                default = 'Y'
                                                 )
 
 bpy.types.Scene.up_axis = EnumProperty          (
-                                                name="up",
-                                                description="",
-                                                items=  (
+                                                name = "up",
+                                                description = "",
+                                                items =   (
                                                             ('X', "X", "", 0),
                                                             ('Y', "Y", "", 1),
                                                             ('Z', "Z", "", 2),
@@ -70,33 +70,33 @@ bpy.types.Scene.up_axis = EnumProperty          (
                                                             ('-Y', "-Y", "", 4),
                                                             ('-Z', "-Z", "", 5)
                                                         ),
-                                                default='Z'
+                                                default = 'Z'
                                                 )
 
 bpy.types.Scene.use_space_transform = BoolProperty  (
-                                                name="use space transform",
-                                                description="More info in FBX Export Window",
-                                                default=True
+                                                name = "use space transform",
+                                                description = "More info in FBX Export Window",
+                                                default = True
                                                     )
 
 bpy.types.Scene.apply_transform = BoolProperty  (
-                                                name="apply transform",
-                                                description="More info in FBX Export Window",
-                                                default=True
+                                                name = "apply transform",
+                                                description = "More info in FBX Export Window",
+                                                default = True
                                                 )
 
 ## GEOMETRY ##
 
 bpy.types.Scene.export_subdivision_surface = BoolProperty  (
-                                                name="export subdivision surface",
-                                                description="More info in FBX Export Window",
-                                                default=False
+                                                name = "export subdivision surface",
+                                                description = "More info in FBX Export Window",
+                                                default = False
                                                 )
 
 bpy.types.Scene.apply_modifiers = BoolProperty  (
-                                                name="apply modifiers",
-                                                description="Apply Modifiers.\nMore info in FBX Export Window",
-                                                default=True
+                                                name = "apply modifiers",
+                                                description = "Apply Modifiers.\nMore info in FBX Export Window",
+                                                default = True
                                                 )
         
 

@@ -96,23 +96,23 @@ class batch_export:
                 old_transList = self.do_clear_transform(obj)
                 
                 bpy.ops.export_scene.fbx    (
-                                                    filepath=self.__export_folder + "/" + obj.name + ".fbx",
-                                                    path_mode='ABSOLUTE',
-                                                    use_selection=True,
-                                                    use_custom_props=self.__custom_prop,
-                                                    axis_forward=self.__forward_axis,
-                                                    axis_up=self.__up_axis,
-                                                    use_space_transform=self.__use_space_transform,
-                                                    bake_space_transform=self.__apply_transform,
-                                                    use_subsurf=self.__export_subdivision_surface,
-                                                    use_mesh_modifiers=self.__apply_modifiers,
-                                                    bake_anim=False,
+                                                    filepath = self.__export_folder + "/" + obj.name + ".fbx",
+                                                    path_mode = 'ABSOLUTE',
+                                                    use_selection = True,
+                                                    use_custom_props = self.__custom_prop,
+                                                    axis_forward = self.__forward_axis,
+                                                    axis_up = self.__up_axis,
+                                                    use_space_transform = self.__use_space_transform,
+                                                    bake_space_transform = self.__apply_transform,
+                                                    use_subsurf = self.__export_subdivision_surface,
+                                                    use_mesh_modifiers = self.__apply_modifiers,
+                                                    bake_anim = False,
                                                 )
 
                 if old_transList is not None:
-                    obj.location=old_transList[0]
-                    obj.rotation_euler=old_transList[1]
-                    obj.scale=old_transList[2]
+                    obj.location = old_transList[0]
+                    obj.rotation_euler = old_transList[1]
+                    obj.scale = old_transList[2]
 
 
         ## EXPORT NORMAL W/WO UCX OBJECTS ##
@@ -124,23 +124,23 @@ class batch_export:
                 old_transList = self.do_clear_transform(obj)
                 
                 bpy.ops.export_scene.fbx    (
-                                                    filepath=self.__export_folder + "/" + obj.name + ".fbx",
-                                                    path_mode='ABSOLUTE',
-                                                    use_selection=True,
-                                                    use_custom_props=self.__custom_prop,
-                                                    axis_forward=self.__forward_axis,
-                                                    axis_up=self.__up_axis,
-                                                    use_space_transform=self.__use_space_transform,
-                                                    bake_space_transform=self.__apply_transform,
-                                                    use_subsurf=self.__export_subdivision_surface,
-                                                    use_mesh_modifiers=self.__apply_modifiers,
-                                                    bake_anim=False,
+                                                    filepath = self.__export_folder + "/" + obj.name + ".fbx",
+                                                    path_mode = 'ABSOLUTE',
+                                                    use_selection = True,
+                                                    use_custom_props = self.__custom_prop,
+                                                    axis_forward = self.__forward_axis,
+                                                    axis_up = self.__up_axis,
+                                                    use_space_transform = self.__use_space_transform,
+                                                    bake_space_transform = self.__apply_transform,
+                                                    use_subsurf = self.__export_subdivision_surface,
+                                                    use_mesh_modifiers = self.__apply_modifiers,
+                                                    bake_anim = False,
                                                 )
 
                 if old_transList is not None:
-                    obj.location=old_transList[0]
-                    obj.rotation_euler=old_transList[1]
-                    obj.scale=old_transList[2]
+                    obj.location = old_transList[0]
+                    obj.rotation_euler = old_transList[1]
+                    obj.scale = old_transList[2]
 
         else:
             for i in range(0, len(objWithUcx)):
@@ -151,26 +151,26 @@ class batch_export:
                     old_transList = self.do_clear_transform(obj)
 
                 bpy.ops.export_scene.fbx    (
-                                                    filepath=self.__export_folder + "/" + objWithUcx[i][0].name + ".fbx",
-                                                    path_mode='ABSOLUTE',
-                                                    use_selection=True,
-                                                    use_custom_props=self.__custom_prop,
-                                                    axis_forward=self.__forward_axis,
-                                                    axis_up=self.__up_axis,
-                                                    use_space_transform=self.__use_space_transform,
-                                                    bake_space_transform=self.__apply_transform,
-                                                    use_subsurf=self.__export_subdivision_surface,
-                                                    use_mesh_modifiers=self.__apply_modifiers,
-                                                    bake_anim=False,
+                                                    filepath = self.__export_folder + "/" + objWithUcx[i][0].name + ".fbx",
+                                                    path_mode = 'ABSOLUTE',
+                                                    use_selection = True,
+                                                    use_custom_props = self.__custom_prop,
+                                                    axis_forward = self.__forward_axis,
+                                                    axis_up = self.__up_axis,
+                                                    use_space_transform = self.__use_space_transform,
+                                                    bake_space_transform = self.__apply_transform,
+                                                    use_subsurf = self.__export_subdivision_surface,
+                                                    use_mesh_modifiers = self.__apply_modifiers,
+                                                    bake_anim = False,
                                                 )
 
-                bpy.ops.object.select_all(action='DESELECT')
+                bpy.ops.object.select_all(action = 'DESELECT')
                 for obj in objWithUcx[i]:
                     obj.select_set(True)
                     if old_transList is not None:
-                        obj.location=old_transList[0]
-                        obj.rotation_euler=old_transList[1]
-                        obj.scale=old_transList[2]
+                        obj.location = old_transList[0]
+                        obj.rotation_euler = old_transList[1]
+                        obj.scale = old_transList[2]
 
     def do_test(self):
 
