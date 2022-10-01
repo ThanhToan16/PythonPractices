@@ -16,11 +16,13 @@ class MergeMaterials(bpy.types.Operator):
         for current_mesh in meshes:
 
             for m in range(len(current_mesh.data.materials)) : # Check through all materials of current mesh
-                current_mat_name = stripSuffix(current_mesh.data.materials[m])
+                if current_mesh.data.materials[m] != None :
+                    current_mat_name = stripSuffix(current_mesh.data.materials[m])
 
-                for gm in all_materials : # Check through all materials in scene
-                    if gm.name == current_mat_name :
-                        o.data.materials[m] = gm
+                    for gm in all_materials : # Check through all materials in scene
+                        if gm.name == current_mat_name :
+                            current_mesh.data.materials[m] = gm
+                        break
 
         
         return{'FINISHED'}
