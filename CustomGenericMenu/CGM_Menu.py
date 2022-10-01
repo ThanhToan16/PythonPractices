@@ -1,6 +1,7 @@
 
 
 
+# from tkinter import Menu
 import bpy
 
 
@@ -53,6 +54,16 @@ class customNormalsMenu(bpy.types.Menu):
         layout.operator("clear.customnormals", text="Clear Custom Normals")
 
 
+class CustomMaterialMenu(bpy.types.Menu):
+    bl_label= "Material Menu"
+    bl_idname = "MYMENU_MT_custom_materialMenu"
+
+    def draw(self, context):
+        layout = self.layout
+
+        layout.operator("merge.materials", text="Merge Materials")
+
+
 class customGenericMenu(bpy.types.Menu):
     bl_label = "Generic Menu"
     bl_idname = "MYMENU_MT_custom_genericMenu"
@@ -63,3 +74,4 @@ class customGenericMenu(bpy.types.Menu):
         layout.menu("MYMENU_MT_custom_UVMenu", text="UV")
         layout.menu("MYMENU_MT_custom_renameMenu", text="Rename")
         layout.menu("MYMENU_MT_custom_normalsMenu", text="Normals")
+        layout.menu("MYMENU_MT_custom_materialMenu", text="Material")

@@ -20,6 +20,7 @@ from .CGM_UV_Ops import *
 from .CGM_Menu import *
 from .CGM_Rename_Ops import *
 from .CGM_Normals_Ops import *
+from .CGM_Material_Ops import *
 
 bpy.types.Scene.my_list = []
 
@@ -33,6 +34,7 @@ classes = (
     customRenameMenu,
     customNormalsMenu,
     customGenericMenu,
+    CustomMaterialMenu,
 
     # UV Ops classes
     activeUV,
@@ -47,7 +49,10 @@ classes = (
 
     # Normals Ops classes
     clearCustomNormals,
-    addCustomNormals
+    addCustomNormals,
+
+    # Material Ops classes
+    MergeMaterials
 )
 
 # register, unregister = bpy.utils.register_classes_factory(classes)
