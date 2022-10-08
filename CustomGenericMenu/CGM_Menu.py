@@ -5,7 +5,6 @@
 import bpy
 
 
-
 class customUVMenu(bpy.types.Menu):
     bl_label = "UV Menu"
     bl_idname = "MYMENU_MT_custom_UVMenu"
@@ -25,6 +24,7 @@ class customUVMenu(bpy.types.Menu):
         layout.separator()
         
         layout.operator("rename.uv", text="Rename UV")
+        layout.operator("sequencerename.uvchannels", text = "Sequence Rename UV Channels")
 
 
 class customRenameMenu(bpy.types.Menu):
@@ -75,3 +75,6 @@ class customGenericMenu(bpy.types.Menu):
         layout.menu("MYMENU_MT_custom_renameMenu", text="Rename")
         layout.menu("MYMENU_MT_custom_normalsMenu", text="Normals")
         layout.menu("MYMENU_MT_custom_materialMenu", text="Material")
+
+        row = layout.row()
+        row.operator("test.01", text="Test01")

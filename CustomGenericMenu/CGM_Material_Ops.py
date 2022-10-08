@@ -9,11 +9,11 @@ class MergeMaterials(bpy.types.Operator):
 
     def execute(self, context):
         all_materials = bpy.data.materials
-        meshes = context.selected_objects
+        objects = context.selected_objects
         
         bpy.ops.object.mode_set(mode='OBJECT') # Make sure in Object Mode before adjusting materials
 
-        for current_mesh in meshes:
+        for current_mesh in objects:
 
             for m in range(len(current_mesh.data.materials)) : # Check through all materials of current mesh
                 if current_mesh.data.materials[m] != None :

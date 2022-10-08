@@ -12,7 +12,7 @@ bl_info = {
 
 
 
-from symbol import shift_expr
+# from symbol import shift_expr
 import bpy
 from bpy.props import *
 
@@ -21,14 +21,27 @@ from .CGM_Menu import *
 from .CGM_Rename_Ops import *
 from .CGM_Normals_Ops import *
 from .CGM_Material_Ops import *
+from .CGM_Test_Ops import *
 
 bpy.types.Scene.my_list = []
+
+## For Sequence Rename UV Channels ##
+bpy.types.Scene.uv_channel_amount = IntProperty (
+                                                    name = "UV Channel Amount",
+                                                    default = 6
+                                                )
+
+
+##  ##
 
 addon_keymaps = []
 
 ## REGISTER ##
 
 classes = (
+    # Test Ops classes
+    Test_01,
+
     # Menu classes
     customUVMenu,
     customRenameMenu,
@@ -41,6 +54,8 @@ classes = (
     addUV,
     delUV,
     renameUV,
+    PropertyCollection,
+    SequenceRename_UVChannels,
 
     # Rename Ops classes
     toCollection,

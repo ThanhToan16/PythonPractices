@@ -10,9 +10,9 @@ class clearCustomNormals(bpy.types.Operator):
     
     def execute(self, context):
 
-        meshes = bpy.context.selected_objects
+        objects = bpy.context.selected_objects
 
-        for m in meshes :
+        for m in objects :
             bpy.context.view_layer.objects.active = m
             bpy.ops.mesh.customdata_custom_splitnormals_clear()
         return{"FINISHED"}
@@ -27,9 +27,9 @@ class addCustomNormals(bpy.types.Operator):
     
     def execute(self, context):
 
-        meshes = bpy.context.selected_objects
+        objects = bpy.context.selected_objects
 
-        for m in meshes :
+        for m in objects :
             bpy.context.view_layer.objects.active = m
             bpy.ops.mesh.customdata_custom_splitnormals_add()
         return{"FINISHED"}

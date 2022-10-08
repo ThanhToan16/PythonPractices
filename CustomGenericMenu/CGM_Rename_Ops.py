@@ -10,9 +10,9 @@ class toCollection(bpy.types.Operator):
 
     def execute(self, context):
 
-        meshes = bpy.context.selected_objects
+        objects = bpy.context.selected_objects
 
-        for m in meshes :
+        for m in objects :
             n = m.users_collection[0].name
             m.name = n 
         return{"FINISHED"}
@@ -91,13 +91,13 @@ class addSuffix(bpy.types.Operator):
     def execute(self, context):
 
         list = context.scene.my_list
-        meshes = bpy.context.selected_objects
+        objects = bpy.context.selected_objects
         n = self.my_int
         
         if not list:
             
             if self.my_bool==1 :
-                for m in meshes :
+                for m in objects :
                     o = str(n)
                     n += 1
                     if n < 11 :
@@ -105,7 +105,7 @@ class addSuffix(bpy.types.Operator):
                     else :
                         m.name = self.my_str + "_Inst" + o
             else :
-                for m in meshes :
+                for m in objects :
                     o = str(n)
                     n += 1
                     if  n < 11 :
