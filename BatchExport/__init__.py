@@ -33,6 +33,11 @@ bpy.types.Scene.export_folder = StringProperty  (
                                                 description = "Directory to export FBX files into"
                                                 )
 
+bpy.types.Scene.ucx_objects = BoolProperty         ( 
+                                                name = "ucx objects",
+                                                default = True
+                                                )
+
 ## CUSTOM PROPERTIES ##
 
 bpy.types.Scene.custom_prop = BoolProperty     (

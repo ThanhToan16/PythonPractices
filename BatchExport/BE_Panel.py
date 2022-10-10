@@ -21,33 +21,28 @@ class BATCH_EXPORT_PT_Panel(Panel):
 
         scene.ucxObjects.clear()
 
+        if scene.ucx_objects :
+            for obj in self.__all_objects:
+                
+                objName = obj.name
 
-        n=0
-
-        for obj in self.__all_objects:
-            
-            objName = obj.name
-
-            if objName[0:4] == "UCX_":
-                scene.ucxObjects.append(obj)
+                if objName[0:4] == "UCX_":
+                    scene.ucxObjects.append(obj)
 
         for obj in self.__selected_objects:
 
             objName = obj.name
 
             if objName[0:4] != "UCX_" :
-                scene.objWithUcx[n] = []
-                scene.objWithUcx[n].append(obj)
-                objName = obj.name
+                scene.objWithUcx[objName] = []
+                scene.objWithUcx[objName].append(obj)
 
                 for ucxObj in scene.ucxObjects:
                     ucxObjName = ucxObj.name
                     checkName = re.search(objName, ucxObjName)
 
                     if checkName:
-                        scene.objWithUcx[n].append(ucxObj)
-                
-                n += 1
+                        scene.objWithUcx[objName].append(ucxObj)
         ##
         
         
@@ -65,6 +60,9 @@ class BATCH_EXPORT_PT_Panel(Panel):
 
         row = layout.row()
         row.prop(scene, "custom_prop", text = "Custom Properties")
+
+        row = layout.row()
+        row.prop(scene, "ucx_objects", text = "UCX Objects")
 
         row = layout.row()
         row = layout.row()
@@ -102,14 +100,15 @@ class BATCH_EXPORT_PT_Panel(Panel):
         row = layout.row()
         row.operator('object.be_ot_operator', text = "Export")
 
-        for i in range(0, len(scene.objWithUcx)) :
-            if len(scene.objWithUcx[i]) == 1 :
+
+        for item in sorted(scene.objWithUcx) :
+            if len(scene.objWithUcx[item]) == 1 :
                 row = layout.row()
-                row.label(text = f'{scene.objWithUcx[i][0].name}')
+                row.label(text = f'{scene.objWithUcx[item][0].name}')
             else :
-                for ii in range(0, len(scene.objWithUcx[i])) :
+                for obj in scene.objWithUcx[item] :
                     row = layout.row()
-                    if ii == 0 :
-                        row.label(text = f'{scene.objWithUcx[i][ii].name}')
+                    if obj.name == item :
+                        row.label(text = f'{obj.name}')
                     else :
-                        row.label(text = f'    {scene.objWithUcx[i][ii].name}')
+                        row.label(text = f'    {obj.name}')

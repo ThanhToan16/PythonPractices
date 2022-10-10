@@ -35,23 +35,26 @@ class batch_export:
 
         return None
 
-    def do_export(self):
-
+    def do_export(self, context):
+        scene = context.scene
         bpy.ops.object.mode_set(mode='OBJECT')
             
         ## EXPORT OBJECTS W/WO UCX ##
 
-        for i in range(0, len(objWithUcx)):
-            
+        for item in sorted(scene.objWithUcx):
+
+            old_transList = []
             bpy.ops.object.select_all(action='DESELECT')
-            for obj in objWithUcx[i]:
+
+            for obj in scene.objWithUcx[item]:
+
                 obj.select_set(True)
                 
-                old_transList = self.do_clear_transform(obj)
+                old_transList.append(self.do_clear_transform(obj))
                 
 
             bpy.ops.export_scene.fbx    (
-                                                filepath = self.__export_folder + "/" + objWithUcx[i][0].name + ".fbx",
+                                                filepath = self.__export_folder + "/" + scene.objWithUcx[item][0].name + ".fbx",
                                                 path_mode = 'ABSOLUTE',
                                                 use_selection = True,
                                                 use_custom_props = self.__custom_prop,
@@ -65,10 +68,13 @@ class batch_export:
                                             )
 
             bpy.ops.object.select_all(action = 'DESELECT')
-            for obj in objWithUcx[i]:
-                obj.select_set(True)
-                if old_transList is not None:
-                    obj.location = old_transList[0]
-                    obj.rotation_euler = old_transList[1]
-                    obj.scale = old_transList[2]
+
+            for i in range(len(scene.objWithUcx[item])):
+
+                scene.objWithUcx[item][i].select_set(True)
+
+                if old_transList[0] is not None:
+                    scene.objWithUcx[item][i].location = old_transList[i][0]
+                    scene.objWithUcx[item][i].rotation_euler = old_transList[i][1]
+                    scene.objWithUcx[item][i].scale = old_transList[i][2]
 

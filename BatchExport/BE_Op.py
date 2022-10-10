@@ -13,7 +13,7 @@ class BATCH_EXPORT_OT_Operator(Operator):
     def execute(self, context):
 
         bat_exp = batch_export(context)
-        bat_exp.do_export()
+        bat_exp.do_export(context)
         # bat_exp.do_test()
 
         self.report({'INFO'}, "Exported to : " + context.scene.export_folder)
