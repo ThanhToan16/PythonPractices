@@ -16,5 +16,5 @@ class BATCH_EXPORT_OT_Operator(Operator):
         bat_exp.do_export()
         # bat_exp.do_test()
 
-        self.report({'INFO'}, "Done Test!!!")
+        self.report({'INFO'}, "Exported to : " + context.scene.export_folder)
         return {'FINISHED'}

@@ -19,7 +19,11 @@ from bpy.props import *
 from . BE_Panel import *
 from . BE_Op import *
 
+##
+bpy.types.Scene.objWithUcx = {}
 
+bpy.types.Scene.ucxObjects = []
+##
 
 
 
